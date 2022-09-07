@@ -32,3 +32,8 @@
 #pwm-limit-label:after {
   content: '%';
 }
+
+#pedal-mode-threshold-label {
+  display: block;
+  text-align: center;
+}

@@ -151,6 +151,45 @@
                   </div>
                 </div>
                 <div class="mb-2 row">
+                  <label class="col-lg-5 col-form-label" for="accel-pedal-mode">Acceleration pedal mode:</label>
+                  <div class="col-lg-7">
+                    <div class="btn-group" role="group">
+                      <input type="radio" class="btn-check" name="accel-pedal-modes" id="accel-pedal-mode-0" onclick="accelPedalMode='pedalSoft'">
+                      <label class="btn btn-outline-secondary" for="accel-pedal-mode-0">Soft</label>
+
+                      <input type="radio" class="btn-check" name="accel-pedal-modes" id="accel-pedal-mode-1" onclick="accelPedalMode='pedalMedium'">
+                      <label class="btn btn-outline-secondary" for="accel-pedal-mode-1">Medium</label>
+
+                      <input type="radio" class="btn-check" name="accel-pedal-modes" id="accel-pedal-mode-2" onclick="accelPedalMode='pedalHard'" checked>
+                      <label class="btn btn-outline-secondary" for="accel-pedal-mode-2">Hard</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-lg-5 col-form-label" for="brake-pedal-mode">Braking pedal mode:</label>
+                  <div class="col-lg-7">
+                    <div class="btn-group" role="group">
+                      <input type="radio" class="btn-check" name="brake-pedal-modes" id="brake-pedal-mode-0" onclick="brakePedalMode='pedalSoft'" checked>
+                      <label class="btn btn-outline-secondary" for="brake-pedal-mode-0">Soft</label>
+
+                      <input type="radio" class="btn-check" name="brake-pedal-modes" id="brake-pedal-mode-1" onclick="brakePedalMode='pedalMedium'">
+                      <label class="btn btn-outline-secondary" for="brake-pedal-mode-1">Medium</label>
+
+                      <input type="radio" class="btn-check" name="brake-pedal-modes" id="brake-pedal-mode-2" onclick="brakePedalMode='pedalHard'">
+                      <label class="btn btn-outline-secondary" for="brake-pedal-mode-2">Hard</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-2 row" id="pedal-mode-threshold">
+                  <label class="col-lg-5 col-form-label" for="pedal-mode-threshold">Pedal mode switch amps:</label>
+                  <div class="col-lg-7">
+                    <label for="pedal-mode-threshold" class="form-label" id="pedal-mode-threshold-label">10</label>
+                    <input type="range" class="form-range" name="pedal-mode-thresholds" min="0" max="80" value="10"
+                      oninput="document.getElementById('pedal-mode-threshold-label').innerHTML=this.value"
+                      onchange="pedalSwitchAmps=this.value">
+                  </div>
+                </div>
+                <div class="mb-2 row">
                   <label class="col-lg-5 col-form-label" for="roll-mode">Roll Angle mode:</label>
                   <div class="col-lg-7">
                     <div class="btn-group" role="group">

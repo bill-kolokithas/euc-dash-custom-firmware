@@ -77,6 +77,12 @@ const faultAlarms = {
   7: 'transport mode'
 }
 
+const pedalModes = {
+  0: 'pedalSoft',
+  1: 'pedalMedium',
+  2: 'pedalHard'
+}
+
 async function sendCommand(cmd, param) {
   command = commands(cmd, param)
 
@@ -99,6 +105,10 @@ async function scan() {
 }
 
 async function initialize() {
+  pedalMode = 0
+  pedalSwitchAmps = 10
+  accelPedalMode = 'pedalHard'
+  brakePedalMode = 'pedalSoft'
   pwmAlarmSpeed = 0
   maxSpeed = 0
   maxSpeedSinceStop = 0
@@ -371,6 +381,13 @@ function parseFramePacket0(data) {
   phaseCurrent = data.getInt16(10) / 100 * polarity
   setField('phase-current', phaseCurrent)
   updatePhaseCurrentStatistics()
+
+  if (pedalSwitchAmps != 0) {
+    if (phaseCurrent >= pedalSwitchAmps && pedalModes[pedalMode] != accelPedalMode)
+      sendCommand(accelPedalMode)
+    else if (phaseCurrent < -pedalSwitchAmps && pedalModes[pedalMode] != brakePedalMode)
+      sendCommand(brakePedalMode)
+  }
 
   // MPU6050 format
   temperature = data.getInt16(12) / 340 + 36.53

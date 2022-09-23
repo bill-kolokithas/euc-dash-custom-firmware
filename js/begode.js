@@ -383,7 +383,7 @@ function parseFramePacket0(data) {
   updatePhaseCurrentStatistics()
 
   if (pedalSwitchAmps != 0) {
-    if (phaseCurrent >= pedalSwitchAmps && pedalModes[pedalMode] != accelPedalMode)
+    if (phaseCurrent >= 10 && pedalModes[pedalMode] != accelPedalMode)
       sendCommand(accelPedalMode)
     else if (phaseCurrent < -pedalSwitchAmps && pedalModes[pedalMode] != brakePedalMode)
       sendCommand(brakePedalMode)
